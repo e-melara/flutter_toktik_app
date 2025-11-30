@@ -15,12 +15,12 @@ class VideoScrollableView extends StatelessWidget {
       itemCount: videos.length,
       itemBuilder: (context, index) {
         final VideoPost videoPost = videos[index];
-
         return Stack(
           children: [
+            SizedBox(child: Container(color: Colors.red)),
             Positioned(
-              bottom: 50,
-              right: 15,
+              bottom: 40,
+              right: 20,
               child: VideoButtons(video: videoPost),
             ),
           ],
