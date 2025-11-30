@@ -49,10 +49,19 @@ class _FullscreenPlayerState extends State<FullscreenPlayer> {
         return SizedBox.expand(
           child: FittedBox(
             fit: BoxFit.cover,
-            child: SizedBox(
-              width: controller.value.size.width,
-              height: controller.value.size.height,
-              child: VideoPlayer(controller),
+            child: GestureDetector(
+              onTap: () {
+                if (controller.value.isPlaying) {
+                  controller.pause();
+                  return;
+                }
+                controller.play();
+              },
+              child: SizedBox(
+                width: controller.value.size.width,
+                height: controller.value.size.height,
+                child: Stack(children: [VideoPlayer(controller)]),
+              ),
             ),
           ),
         );
