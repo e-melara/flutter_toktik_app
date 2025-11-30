@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toktik/presentation/widgets/video/video_background.dart';
 
 import 'package:video_player/video_player.dart';
 
@@ -60,7 +61,9 @@ class _FullscreenPlayerState extends State<FullscreenPlayer> {
               child: SizedBox(
                 width: controller.value.size.width,
                 height: controller.value.size.height,
-                child: Stack(children: [VideoPlayer(controller)]),
+                child: Stack(
+                  children: [VideoPlayer(controller), VideoBackground()],
+                ),
               ),
             ),
           ),
