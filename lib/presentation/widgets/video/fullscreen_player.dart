@@ -40,8 +40,21 @@ class _FullscreenPlayerState extends State<FullscreenPlayer> {
     return FutureBuilder(
       future: controller.initialize(),
       builder: (context, snapshot) {
-        return const Center(
-          child: CircularProgressIndicator(strokeWidth: 2, color: Colors.red),
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Center(
+            child: CircularProgressIndicator(strokeWidth: 2, color: Colors.red),
+          );
+        }
+
+        return SizedBox.expand(
+          child: FittedBox(
+            fit: BoxFit.cover,
+            child: SizedBox(
+              width: controller.value.size.width,
+              height: controller.value.size.height,
+              child: VideoPlayer(controller),
+            ),
+          ),
         );
       },
     );
